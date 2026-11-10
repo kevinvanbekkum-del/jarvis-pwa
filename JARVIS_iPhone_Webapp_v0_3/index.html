@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#061426">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="JARVIS">
+  <meta name="description" content="J.A.R.V.I.S. persoonlijke AI-assistent">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/jarvis-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>J.A.R.V.I.S.</title>
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">STARK INDUSTRIES · PERSONAL SYSTEM</div>
+        <h1>J.A.R.V.I.S.</h1>
+      </div>
+      <div class="system-state"><span class="status-dot"></span><span id="systemStatus">STANDBY</span></div>
+    </header>
+
+    <section id="dashboard" class="view active">
+      <div class="core-wrap">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="core">
+          <div class="core-inner">
+            <div class="core-symbol">J</div>
+            <div class="core-state" id="coreState">READY</div>
+            <div class="core-sub">PERSONAL AI CORE</div>
+          </div>
+        </div>
+        <div class="orbit-label label-top">VOICE INTERFACE</div>
+        <div class="orbit-label label-bottom">SYSTEM 0.3 · ONLINE</div>
+      </div>
+
+      <button id="micButton" class="primary-action">
+        <span class="mic-icon">⌁</span><span id="micLabel">TAP TO SPEAK</span>
+      </button>
+      <p id="voiceHint" class="hint">Tik op de microfoon en geef je opdracht. Zeg eventueel eerst “Hey JARVIS”.</p>
+      <div class="metrics">
+        <div class="metric"><span class="metric-value" id="voiceMetric">READY</span><span class="metric-label">VOICE</span></div>
+        <div class="metric"><span class="metric-value" id="langMetric">NL / EN</span><span class="metric-label">LANGUAGE</span></div>
+        <div class="metric"><span class="metric-value">LOCAL</span><span class="metric-label">CORE</span></div>
+      </div>
+      <div class="section-heading">QUICK COMMANDS</div>
+      <div class="quick-grid">
+        <button class="quick" data-command="Hoe laat is het?"><b>◷</b><span>Hoe laat is het?</span></button>
+        <button class="quick" data-command="Welke datum is het?"><b>▦</b><span>Welke datum is het?</span></button>
+        <button class="quick" data-command="Wie ben je?"><b>◉</b><span>Wie ben je?</span></button>
+        <button class="quick" data-command="Vertel een grap."><b>✧</b><span>Vertel een grap</span></button>
+      </div>
+      <div class="notice">BASISMODUS · Voor echte online AI is een beveiligde AI-server nodig.</div>
+    </section>
+
+    <section id="chat" class="view">
+      <div class="chat-title"><span>COMMUNICATION CHANNEL</span><span class="tiny-dot"></span></div>
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <form id="chatForm" class="composer">
+        <input id="messageInput" autocomplete="off" placeholder="Bericht aan JARVIS…" aria-label="Bericht aan JARVIS">
+        <button type="submit" aria-label="Verstuur">↑</button>
+      </form>
+    </section>
+
+    <section id="settings" class="view settings-view">
+      <div class="section-heading">PERSONAL CONFIGURATION</div>
+      <label class="setting-row"><span><b>Language / Taal</b><small>Antwoorden en spraakherkenning</small></span>
+        <select id="languageSelect"><option value="nl-NL">Nederlands</option><option value="en-US">English</option></select>
+      </label>
+      <label class="setting-row"><span><b>Voice / Stem</b><small>Beschikbare iPhone-systeemstem</small></span>
+        <select id="voiceSelect"><option value="default">Automatisch</option><option value="male">Mannelijk (indien beschikbaar)</option><option value="female">Vrouwelijk (indien beschikbaar)</option></select>
+      </label>
+      <label class="setting-row"><span><b>Speech / Spraak</b><small>JARVIS spreekt antwoorden uit</small></span>
+        <input id="speechToggle" type="checkbox" checked>
+      </label>
+      <div class="settings-card">
+        <div class="section-heading">ABOUT THIS BUILD</div>
+        <p>JARVIS 0.3 is een installeerbare webapp met lokale basisopdrachten, chatinterface en spraakuitvoer. Spraakherkenning werkt alleen als je browser deze functie aanbiedt.</p>
+        <p class="warning">Een echte “Hey JARVIS”-wake word op de achtergrond wordt niet ondersteund door iOS-webapps. Tik eerst op de microfoon.</p>
+      </div>
+      <button id="clearChat" class="secondary-action">WIS GESPREK</button>
+    </section>
+
+    <nav class="tabbar">
+      <button class="tab active" data-view="dashboard"><span>⌂</span><small>HOME</small></button>
+      <button class="tab" data-view="chat"><span>▤</span><small>CHAT</small></button>
+      <button class="tab" data-view="settings"><span>⚙</span><small>SETTINGS</small></button>
+    </nav>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
